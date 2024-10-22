@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+</head>
+<body>
+  <p><a href="/"">Logout</a></p>  
+  <h1>Welcome to SPAM Number Checker</h1>
+  <form action="/fetch" method="POST">
+  <label for="name">Search by Name:</label>
+  <input type="text" name="name" id="name">
+  <br>
+  <p>(or)</p>
+  <label for="phone">Search by Phone Number:</label>
+  <input type="number" name="phone-number" id="phone-number">
+  <br>
+  <br>
+  <input type="submit">
+  </form>
+  <p>(Note: If you want to report a number as spam, search the number and report it.)</p>
+</body>
+</html>

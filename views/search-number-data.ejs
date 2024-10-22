@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Data</title>
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <table>
+    <tr>
+      <th>name</th>
+      <th>phone-number</th>
+      <th>email</th>
+      <th>Spam Count</th>
+      <th>Spam Report</th>
+    </tr>
+    <% if(data.length > 0) { %>
+      <% data.forEach(element => { %>
+        <tr>
+          <td><%= element.name %></td>
+          <td><%= element.phonenumber %></td>
+          <td><%= element.email %></td>
+          <td><%= element.spam_likelihood %></td>
+          <td>
+            <form action="/report-spam" method="post">
+              <input type="hidden" name="phoneNumber" value="<%= element.phonenumber %>">
+              <label for="yes">
+                <input type="radio" name="spamReport" id="spamReport" value="Yes">Yes
+              </label>
+              <label for="no">
+                <input type="radio" name="spamReport" id="spamReport" value="No">No
+              </label>
+              <input type="submit">
+            </form>
+          </td>
+        </tr>
+      <% }); %>
+    <% } else { %>
+      <tr>
+        <td colspan="3">No Data Found</td>
+      </tr>
+    <% } %>
+  </table>
+</body>
+
+</html>
