@@ -5,28 +5,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Name Data</title>
-  <style>
-    table,
-    th,
-    td {
-      border: 1px solid black;
-    }
-  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-  <table>
-    <tr>
-      <th>name</th>
-      <th>phone-number</th>
-      <th>spam-count</th>
+<body  class="bg-zinc-900 text-white font-mono p-8" >
+  <h1 class="w-max mx-auto text-3xl mb-2">User Data </h1> 
+
+  <table class="border w-mx mx-auto">
+    <tr class="border">
+      <th class="border" >name</th>
+      <th class="border">phone-number</th>
+      <th class="border">spam-count</th>
     </tr>
     <% if(data.length > 0) { %>
       <% data.forEach(element => { %>
-        <tr>
-          <td><%= element.name %></td>
-          <td><%= element.phonenumber %></td>
-          <td><%= element.spam_likelihood %></td>
+        <tr class="border">
+          <td class="border"><%= element.name %></td>
+          <td class="border"><%= element.phonenumber %></td>
+          <td class="border"><%= element.spam_likelihood %></td>
         </tr>
       <% }); %>
     <% } else { %>

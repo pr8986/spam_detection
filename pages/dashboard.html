@@ -4,21 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
-<body>
-  <p><a href="/"">Logout</a></p>  
-  <h1>Welcome to SPAM Number Checker</h1>
-  <form action="/fetch" method="POST">
+<body class="bg-zinc-900 text-white font-mono">
+  <nav class="w-screen flex justify-between px-8 py-2 border-b">
+    <h1 class="text-xl">Welcome to SPAM Number Checker</h1>
+    <a class="border px-2 py-1.5 bg-red-500 text-white rounded-md hover:bg-gray-200 transition-all" href="/">Logout</a>  
+  </nav>
+  <form class="border w-max p-6 rounded-md mx-auto mt-8"  action="/fetch" method="POST">
   <label for="name">Search by Name:</label>
-  <input type="text" name="name" id="name">
+  <input class="text-black"  type="text" name="name" id="name">
   <br>
   <p>(or)</p>
   <label for="phone">Search by Phone Number:</label>
-  <input type="number" name="phone-number" id="phone-number">
+  <input class="text-black"  type="number" name="phone-number" id="phone-number">
   <br>
   <br>
-  <input type="submit">
+  <input  class="bg-blue-600 px-2 w-full rounded-md py-1.5" type="submit">
   </form>
-  <p>(Note: If you want to report a number as spam, search the number and report it.)</p>
+  <p class="w-max mt-2 mx-auto">(Note: If you want to report a number as spam, search the number and report it.)</p>
 </body>
 </html>

@@ -5,17 +5,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Number Data</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
     table,
     th,
     td {
-      border: 1px solid black;
+      border: 1px solid white;
     }
   </style>
 </head>
 
-<body>
-  <table>
+<body  class="bg-zinc-900 text-white font-mono p-8" >
+  <h1 class="w-max mx-auto text-3xl mb-2">User Data </h1> 
+  <table  class="border w-mx mx-auto">
     <tr>
       <th>name</th>
       <th>phone-number</th>
@@ -32,14 +35,17 @@
           <td><%= element.spam_likelihood %></td>
           <td>
             <form action="/report-spam" method="post">
-              <input type="hidden" name="phoneNumber" value="<%= element.phonenumber %>">
-              <label for="yes">
-                <input type="radio" name="spamReport" id="spamReport" value="Yes">Yes
-              </label>
-              <label for="no">
-                <input type="radio" name="spamReport" id="spamReport" value="No">No
-              </label>
-              <input type="submit">
+              <div class="w-max mx-auto">
+
+                <input type="hidden" name="phoneNumber" value="<%= element.phonenumber %>">
+                <label for="yes">
+                  <input type="radio" name="spamReport" id="spamReport" value="Yes">Yes
+                </label>
+                <label for="no">
+                  <input type="radio" name="spamReport" id="spamReport" value="No">No
+                </label>
+              </div>
+              <input class="border px-2 py-1.5 bg-white text-black rounded-md hover:bg-gray-200 transition-all w-max mx-auto" type="submit">
             </form>
           </td>
         </tr>

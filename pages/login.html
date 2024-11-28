@@ -4,19 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
-<body>
-  <h1>Login</h1>
-  <form action="/login" method="POST">
+<body class="bg-zinc-900 text-white font-mono">
+  <h1  class="w-max mx-auto text-4xl mt-2 underline">Login</h1>
+  <form  class="border w-max p-6 rounded-md mx-auto mt-8" action="/login" method="POST">
     <label for="phone-number">Phone Number:</label>
-    <input type="number" placeholder="Enter mobile number" name="phone-number" id="phone-number" required>
+    <input class="text-black" type="number" placeholder="Enter mobile number" name="phone-number" id="phone-number" required>
     <br>
     <br>
     <label for="password">Password:</label>
-    <input type="password" placeholder="Enter password" name="password" id="password" required>
+    <input class="text-black" type="password" placeholder="Enter password" name="password" id="password" required>
     <br>
     <br>
-    <input type="submit">
+    <input class="bg-blue-600 px-2 w-full rounded-md py-1.5" type="submit">
   </form>
 </body>
 </html>
