@@ -1,11 +1,15 @@
 import mysql from 'mysql';
+import dotenv from 'dotenv';
+dotenv.config();
+
+
 
 const globalDbConnection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
   database: 'global_db',
-  port: 3307
+  port: process.env.XAMP_PORT
 });
 
 globalDbConnection.connect(function(err){

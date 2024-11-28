@@ -5,6 +5,11 @@ import { fileURLToPath } from "url";
 import bodyParser from "body-parser";
 import connection from './userdatabase.js';
 import globalDbConnection  from "./globaldatabase.js";
+import mysql from 'mysql2';
+import dotenv from 'dotenv';
+dotenv.config();
+
+
 
 const app = express();
 const port = 3000;
@@ -125,6 +130,78 @@ app.post('/report-spam', (req,res) => {
     })
   }
 })
+
+const dbConfig = {
+  host: 'localhost',
+  user: 'root', 
+  password: '', 
+  port: process.env.XAMP_PORT
+
+};
+
+// Connect to MySQL Server
+const connection2 = mysql.createConnection(dbConfig);
+
+connection2.connect((err) => {
+  if (err) {
+    console.error('Error connecting to MySQL:', err.message);
+    return;
+  }
+  console.log('Connected to MySQL Server.');
+});
+
+app.get('/initialize', async (req, res) => {
+  try {
+    // CREATE DATABASE user_db
+    await connection2.promise().query(`CREATE DATABASE IF NOT EXISTS user_db;`);
+    console.log('Database user_db created.');
+
+    // CREATE TABLE user
+    await connection2.promise().query(`
+      CREATE TABLE IF NOT EXISTS user_db.user (
+        name VARCHAR(50) NOT NULL,
+        phonenumber VARCHAR(50) PRIMARY KEY NOT NULL,
+        email VARCHAR(50),
+        password VARCHAR(50) NOT NULL
+      );
+    `);
+    console.log('Table user created.');
+
+    // CREATE DATABASE global_db
+    await connection2.promise().query(`CREATE DATABASE IF NOT EXISTS global_db;`);
+    console.log('Database global_db created.');
+
+    // CREATE TABLE global_database
+    await connection2.promise().query(`
+      CREATE TABLE IF NOT EXISTS global_db.global_database (
+        global_id INT PRIMARY KEY AUTO_INCREMENT,
+        name VARCHAR(255) NOT NULL,
+        phonenumber VARCHAR(15) NOT NULL,
+        email VARCHAR(255),
+        spam_likelihood INT
+      );
+    `);
+    console.log('Table global_database created.');
+
+    // INSERT INTO global_database
+    await connection2.promise().query(`
+      INSERT INTO global_db.global_database (name, phonenumber, email, spam_likelihood)
+      SELECT
+        CONCAT('User', id),
+        CONCAT('555', LPAD(FLOOR(RAND() * 1000000000), 7, '0')),
+        CONCAT('user', id, '@example.com'),
+        FLOOR(RAND() * 3)
+      FROM
+        (SELECT ROW_NUMBER() OVER () AS id FROM information_schema.tables LIMIT 100) AS ids;
+    `);
+    console.log('Sample data inserted into global_database.');
+
+    res.send('Databases and tables initialized successfully.');
+  } catch (error) {
+    console.error('Error initializing databases and tables:', error.message);
+    res.status(500).send('Error initializing databases and tables.');
+  }
+});
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
