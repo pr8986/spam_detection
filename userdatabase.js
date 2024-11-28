@@ -4,9 +4,9 @@ import mysql from 'mysql';
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'Sidwick@@99',
+  password: '',
   database: 'user_db',
-  port: 3306
+  port: 3307
 })
 
 connection.connect(function(err){

@@ -4,17 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SPAM Number Checker</title>
-  <style>
-    p{
-      font-size: 20px;
-    }
-  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <h1>Hello, Welcome to SPAM Number Checker</h1>
-  <ul>
-    <li><p>If you are a new user, please <a href="/registration">register</a> to proceed.</p></li>
-    <li><p>If you are an existing user, please <a href="/login">login.</a></p></li>
-  </ul>
+<body class="bg-zinc-900 text-white font-mono">
+  <h1 class="w-max mx-auto text-4xl mt-2 ">Span Number Checker</h1>
+  <div class="border mx-12 h-80 p-8">
+    <img src="../../phone.jpg" alt="Img">
+    <p>New user ?: <a class="border px-2 py-1.5 bg-white text-black rounded-md hover:bg-gray-200 transition-all" href="/registration">register</a> </p>
+    <p class="mt-6">Existing user ? <a  class="border px-2 py-1.5 bg-white text-black rounded-md hover:bg-gray-200 transition-all" href="/login">login.</a></p>
+  </div>
 </body>
 </html>
